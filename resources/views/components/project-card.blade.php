@@ -14,7 +14,6 @@
     {{ $descrizione }}
     <p class="card-text">Sviluppatori:  <br> <b>{{ $devs }}</b></p>
     {{ $dettagli }}
-    <!-- -->
   </div>
   <div class="card-footer text-body-secondary">
     {{$data}}

@@ -13,7 +13,10 @@
     }
 </style>
     <div class="container pb-5">
-        <h1 class="text-center mt-5">Tutti i Progetti</h1>
+        <div class="d-flex justify-content-around w-100 ">
+            <h1 class="text-center mt-5">Tutti i Progetti</h1>
+            <a href="{{ route("projects.create") }}" class="btn btn-success fs-3 mt-5">Crea un nuovo progetto</a>
+        </div>
         <div class="row">
             @foreach ($projects as $project)
                 <div class="col-6">
@@ -39,6 +42,9 @@
                     </x-project-card>
                 </div>
             @endforeach
+        </div>
+        <div class="mt-5">
+            {{ $projects->links('pagination::bootstrap-5') }}
         </div>
     </div>
 @endsection
