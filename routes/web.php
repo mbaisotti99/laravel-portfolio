@@ -36,4 +36,8 @@ Route::resource("projects", ProjectController::class)
 ->whereNumber("project")
 ->middleware(["auth", "verified"]);
 
+Route::fallback(function(){
+    return view('errors.404');
+});
+
 require __DIR__.'/auth.php';

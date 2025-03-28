@@ -13,9 +13,12 @@
             width: 100%;
         }
     </style>
+    @php
+    $hello = explode(" ",$user->name)
+    @endphp
     <div class="container cent">
         <div class="profileCont">
-            <h1>Benvenuto {{ $user->name }}</h1>
+            <h1 class="text-center">Benvenuto {{ $hello[0] }}</h1>
             <table class="table table-striped mt-5">
                 <tbody>
                     <tr>
