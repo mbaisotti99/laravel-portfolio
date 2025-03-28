@@ -7,9 +7,11 @@
         justify-content: center;
         align-items: center;
         height: 100%;
+        flex-direction: column;
     }
 </style>
 <div class="container cent">
+<h1 class="text-center">Crea un nuovo progetto</h1>
     <form action="{{ route("projects.store") }}" method="POST">
         @csrf
         <div class="row mt-5 justify-content-center">
@@ -38,5 +40,6 @@
             <button class="btn btn-success mt-5 w-50" type="submit">Salva</button>
         </div>
     </form>
+    <a href="{{ route("projects.index") }}" class="btn btn-primary fs-3 mt-5">Torna alla lista progetti</a>
 </div>
 @endsection
