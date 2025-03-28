@@ -2,7 +2,8 @@
     <h5 class="card-header">    {{$titolo}}    </h5>
   <div class="card-body">
     <p class="card-text">
-    @if (empty($cliente))
+
+    @if ($cliente->isNotEmpty())
     Cliente: <br> <b>{{ $cliente }}</b>
     @else
     <b>
