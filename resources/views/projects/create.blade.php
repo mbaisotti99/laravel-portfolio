@@ -23,7 +23,7 @@
         newCont.classList.add("d-flex", "align-items-center", "mt-3")
         newCont.id = "dev" + count + "Cont"
 
-        newBtn.classList.add("btn", "btn-primary", "my-2")
+        newBtn.classList.add("btn", "btn-outline-secondary", "my-2")
         newBtn.type = "button"
         newBtn.id = "remBtn" + count
         newBtn.textContent = "-"
@@ -67,7 +67,7 @@
             <div class="col-6 mb-3" id="devsCont">
                 <div class="d-flex justify-content-between my-3">
                     <label for="dev1" class="form-label">Sviluppatori: </label>
-                    <button type="button" id="addBtn" class="btn btn-primary" onclick="addInput()">+</button>
+                    <button type="button" id="addBtn" class="btn" onclick="addInput()"><x-bi-plus-square style="width: 32px; height: 32px" /></button>
                 </div>
                 <div class="d-flex" id="dev1Cont">
                     <input type="text" name="dev1" id="dev1" class="form-control">

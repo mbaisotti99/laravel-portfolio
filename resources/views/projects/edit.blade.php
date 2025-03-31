@@ -9,6 +9,10 @@
             height: 100%;
             flex-direction: column;
         }
+
+        #addBtn{
+            padding: 0 !important;
+        }
     </style>
     <script>
         let devs = <?php echo json_encode($project->devs); ?>;
@@ -27,7 +31,7 @@
                 newCont.classList.add("d-flex", "align-items-center", "mt-3")
                 newCont.id = "dev" + i + "Cont"
 
-                newBtn.classList.add("btn", "btn-primary", "my-2")
+                newBtn.classList.add("btn", "btn-outline-secondary", "my-2")
                 newBtn.type = "button"
                 newBtn.id = "remBtn" + i
                 newBtn.textContent = "-"
@@ -57,7 +61,7 @@
             newCont.classList.add("d-flex", "align-items-center", "mt-3")
             newCont.id = "dev" + count + "Cont"
 
-            newBtn.classList.add("btn", "btn-primary", "my-2")
+            newBtn.classList.add("btn", "btn-outline-secondary", "my-2")
             newBtn.type = "button"
             newBtn.id = "remBtn" + count
             newBtn.textContent = "-"
@@ -104,16 +108,16 @@
 
 
                 <div class="col-6 mb-3">
-                    <div class="d-flex justify-content-between my-3">
+                    <div class="d-flex justify-content-between my-3 w-100">
                         <label for="dev1" class="form-label">Sviluppatori: </label>
-                        <button type="button" id="addBtn" class="btn btn-primary" onclick="addInput()">+</button>
+                        <button type="button" id="addBtn" class="btn" onclick="addInput()"><x-bi-plus-square style="width: 32px; height: 32px" /></button>
                     </div>
                     <div id="devsCont">
                         @foreach ($project->devs as $key => $dev)
                             <div class="d-flex mt-3" id="dev{{$key}}Cont">
                                 <input type="text" name="dev{{ $key }}" id="dev{{$key}}" value="{{ $dev }}" class="form-control">
                                 @if ($key > 0)
-                                    <button type="button" id="remBtn{{$key}}" class="btn btn-primary"
+                                    <button type="button" id="remBtn{{$key}}" class="btn btn-outline-secondary"
                                         onclick="removeInput({{$key}})">-</button>
                                 @endif
                             </div>

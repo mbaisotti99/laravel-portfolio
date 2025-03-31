@@ -41,10 +41,14 @@ class ProjectController extends Controller
         $newProject->titolo = $data["titolo"];
         $newProject->cliente = $data["cliente"];
         $newProject->descrizione = $data["descrizione"];
-        $devsArr = array_filter($data, function ($var){
-            return str_contains($var, "dev");
-        }, ARRAY_FILTER_USE_KEY);
-        $newProject->devs = $devsArr;
+        $devsArr = array_filter($data, function ($var, $key){
+            if (str_contains($key, "dev") && trim($var) !== ""){
+                return true;
+            }else {
+                return false;
+            };
+        }, ARRAY_FILTER_USE_BOTH);
+        $newProject->devs = array_values($devsArr);
         $newProject->data = $data["data"];
 
         $newProject->save();
@@ -61,8 +65,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        $devCount = count($project->devs);
-        return view("projects.edit", compact("project", "devCount" ));
+        return view("projects.edit", compact("project" ));
     }
 
     /**
@@ -75,10 +78,14 @@ class ProjectController extends Controller
         $project->titolo = $data["titolo"];
         $project->descrizione = $data["descrizione"];
         $project->cliente = $data["cliente"];
-        $devsArr = array_filter($data, function ($var){
-            return str_contains($var, "dev");
-        }, ARRAY_FILTER_USE_KEY);
-        $project->devs = $devsArr;
+        $devsArr = array_filter($data, function ($var, $key){
+            if (str_contains($key, "dev") && trim($var) !== ""){
+                return true;
+            }else {
+                return false;
+            };
+        }, ARRAY_FILTER_USE_BOTH);
+        $project->devs = array_values($devsArr);
         $project->data = $data["data"];
 
         $project->update();
