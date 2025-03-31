@@ -60,10 +60,14 @@
                 <label for="titolo" class="form-label">Titolo: </label>
                 <input type="text" name="titolo" id="titolo" class="form-control">
             </div>
+
+            
             <div class="col-6">
                 <label for="cliente" class="form-label">Cliente: </label>
                 <input type="text" name="cliente" id="cliente" class="form-control">
             </div>
+
+
             <div class="col-6 mb-3" id="devsCont">
                 <div class="d-flex justify-content-between my-3">
                     <label for="dev1" class="form-label">Sviluppatori: </label>
@@ -71,13 +75,16 @@
                 </div>
                 <div class="d-flex" id="dev1Cont">
                     <input type="text" name="dev1" id="dev1" class="form-control">
-                    <!-- <button type="button" id="remBtn1" class="btn btn-primary" onclick="removeInput()" disabled>-</button> -->
                 </div>
             </div>
+
+
             <div class="col-6">
                 <label for="descrizione" class="form-label">Descrizione: </label>
-                <textarea name="descrizione" id="descrizione" class="form-control"></textarea>
+                <textarea style="height: 200px" name="descrizione" id="descrizione" class="form-control"></textarea>
             </div>
+
+
             <div class="col-6">
                 <label for="data" class="form-label">Data completamento: </label>
                     <input type="date" name="data" id="data" class="form-control">
