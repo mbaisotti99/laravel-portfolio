@@ -41,7 +41,9 @@ class ProjectController extends Controller
         $newProject->titolo = $data["titolo"];
         $newProject->cliente = $data["cliente"];
         $newProject->descrizione = $data["descrizione"];
-        $devsArr = explode(",", $data["devs"]);
+        $devsArr = array_filter($data, function ($var){
+            return str_contains($var, "dev");
+        }, ARRAY_FILTER_USE_KEY);
         $newProject->devs = $devsArr;
         $newProject->data = $data["data"];
 
@@ -59,7 +61,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view("projects.edit", compact("project"));
+        $devCount = count($project->devs);
+        return view("projects.edit", compact("project", "devCount" ));
     }
 
     /**
