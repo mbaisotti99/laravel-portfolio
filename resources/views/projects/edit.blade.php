@@ -11,16 +11,18 @@
         }
     </style>
     <script>
-        let count = 2;
         let devs = <?php echo json_encode($project->devs); ?>;
+        let count = devs.length;
 
         function updateInputs() {
+            let devsCont = document.getElementById("devsCont")
+            devsCont.innerHTML = ""
 
             devs.forEach((dev, i) => {
+                
                 let newCont = document.createElement("div")
                 let newInput = document.createElement("input")
                 let newBtn = document.createElement("button")
-                let devsCont = document.getElementById("devsCont")
 
                 newCont.classList.add("d-flex", "align-items-center", "mt-3")
                 newCont.id = "dev" + i + "Cont"
@@ -39,7 +41,7 @@
 
                 devsCont.appendChild(newCont)
                 newCont.appendChild(newInput)
-                newCont.appendChild(newBtn)
+                i > 0 && newCont.appendChild(newBtn)
 
             });
         }
@@ -71,7 +73,6 @@
             newCont.appendChild(newBtn)
             count++
 
-
         }
         function removeInput(curN) {
 
@@ -79,6 +80,7 @@
             let curCont = document.getElementById("dev" + curN + "Cont")
 
             curCont.remove()
+            devs.splice(curN, 1)
             updateInputs()
 
         }
@@ -101,20 +103,22 @@
                 </div>
 
 
-                <div class="col-6 mb-3" id="devsCont">
+                <div class="col-6 mb-3">
                     <div class="d-flex justify-content-between my-3">
                         <label for="dev1" class="form-label">Sviluppatori: </label>
                         <button type="button" id="addBtn" class="btn btn-primary" onclick="addInput()">+</button>
                     </div>
-                    @foreach ($project->devs as $key => $dev)
-                        <div class="d-flex mt-3" id="dev{{$key}}Cont">
-                            <input type="text" name="dev1" id="dev{{$key}}" value="{{ $dev }}" class="form-control">
-                            @if ($key > 0)
-                                <button type="button" id="remBtn{{$key}}" class="btn btn-primary"
-                                    onclick="removeInput({{$key}})">-</button>
-                            @endif
-                        </div>
-                    @endforeach
+                    <div id="devsCont">
+                        @foreach ($project->devs as $key => $dev)
+                            <div class="d-flex mt-3" id="dev{{$key}}Cont">
+                                <input type="text" name="dev{{ $key }}" id="dev{{$key}}" value="{{ $dev }}" class="form-control">
+                                @if ($key > 0)
+                                    <button type="button" id="remBtn{{$key}}" class="btn btn-primary"
+                                        onclick="removeInput({{$key}})">-</button>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
 
 

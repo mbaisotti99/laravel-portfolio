@@ -75,7 +75,9 @@ class ProjectController extends Controller
         $project->titolo = $data["titolo"];
         $project->descrizione = $data["descrizione"];
         $project->cliente = $data["cliente"];
-        $devsArr = explode(",", $data["devs"]);
+        $devsArr = array_filter($data, function ($var){
+            return str_contains($var, "dev");
+        }, ARRAY_FILTER_USE_KEY);
         $project->devs = $devsArr;
         $project->data = $data["data"];
 
