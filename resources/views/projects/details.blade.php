@@ -11,7 +11,8 @@
         }
 
         .card {
-            width: 450px;
+            width: 450px !important;
+            height: 1000px !important;
         }
     </style>
     <div class="container cent">
@@ -34,6 +35,12 @@
             <x-slot:dettagli>
                 <!-- <a href="{{route("projects.show", $project->id)}}" class="btn btn-primary">Dettagli</a> -->
             </x-slot:dettagli>
+            <x-slot:typeName>
+                            {{ $project->type->nome }}
+                        </x-slot:typeName>
+                        <x-slot:typeDesc>
+                            {{ $project->type->descrizione }}
+                        </x-slot:typeDesc>
         </x-project-card>
         <div class="d-flex justify-content-around w-50 mt-5 ">
             <a href="{{ route("projects.edit", $project) }}" class="btn fs-3 btn-outline-warning">Modifica</a>

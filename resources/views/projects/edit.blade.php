@@ -117,7 +117,7 @@
                     <div id="devsCont">
                         @foreach ($project->devs as $key => $dev)
                             <div class="d-flex mt-3" id="dev{{$key}}Cont">
-                                <input type="text" name="dev{{ $key }}" id="dev{{$key}}" value="{{ $dev }}" class="form-control">
+                                <input required type="text" name="dev{{ $key }}" id="dev{{$key}}" value="{{ $dev }}" class="form-control">
                                 @if ($key > 0)
                                     <button type="button" id="remBtn{{$key}}" class="btn btn-outline-secondary"
                                         onclick="removeInput({{$key}})">-</button>
@@ -140,6 +140,14 @@
                     <input required value="{{ $project->data }}" type="date" name="data" id="data" class="form-control">
                 </div>
 
+                <div class="col-6">
+                    <label for="type_id" class="mb-3">Tipo Progetto:</label>
+                    <select name="type_id" id="type_id" class="form-control">
+                        @foreach ($types as $type ) 
+                            <option value="{{ $type->id }}" {{ $type->id == $project->type_id ? "selected" : "" }}> {{ $type->nome }} </option>
+                        @endforeach
+                    </select>
+                </div>
 
                 <button class="btn btn-success mt-5 w-50" type="submit">Salva</button>
 

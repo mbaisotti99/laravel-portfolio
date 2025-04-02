@@ -16,6 +16,7 @@
         <div class="d-flex justify-content-around w-100 ">
             <h1 class="text-center mt-5">Tutti i Progetti</h1>
             <a href="{{ route("projects.create") }}" class="btn btn-success fs-3 mt-5">Crea un nuovo progetto</a>
+            <a href="{{ route("types.index") }}" class="btn btn-success fs-3 mt-5">Visualizza tipologie</a>
         </div>
         <div class="row">
             @foreach ($projects as $project)
@@ -39,6 +40,12 @@
                         <x-slot:dettagli>
                             <a href="{{route("projects.show", $project->id)}}" class="btn btn-primary mt-3">Dettagli</a>
                         </x-slot:dettagli>
+                        <x-slot:typeName>
+                            {{ $project->type->nome }}
+                        </x-slot:typeName>
+                        <x-slot:typeDesc>
+                            {{ $project->type->descrizione }}
+                        </x-slot:typeDesc>
                     </x-project-card>
                 </div>
             @endforeach

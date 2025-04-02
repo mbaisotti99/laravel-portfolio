@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,10 @@ Route::middleware(["auth", "verified"])
 
 Route::resource("projects", ProjectController::class)
 ->whereNumber("project")
+->middleware(["auth", "verified"]);
+
+Route::resource("types", TypeController::class)
+->whereNumber("type")
 ->middleware(["auth", "verified"]);
 
 Route::fallback(function(){

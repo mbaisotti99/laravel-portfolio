@@ -58,10 +58,10 @@
 
             <div class="col-6">
                 <label for="titolo" class="form-label">Titolo: </label>
-                <input type="text" name="titolo" id="titolo" class="form-control">
+                <input required type="text" name="titolo" id="titolo" class="form-control">
             </div>
 
-            
+
             <div class="col-6">
                 <label for="cliente" class="form-label">Cliente: </label>
                 <input type="text" name="cliente" id="cliente" class="form-control">
@@ -74,21 +74,30 @@
                     <button type="button" id="addBtn" class="btn" onclick="addInput()"><x-bi-plus-square style="width: 32px; height: 32px" /></button>
                 </div>
                 <div class="d-flex" id="dev1Cont">
-                    <input type="text" name="dev1" id="dev1" class="form-control">
+                    <input required type="text" name="dev1" id="dev1" class="form-control">
                 </div>
             </div>
 
 
             <div class="col-6">
                 <label for="descrizione" class="form-label">Descrizione: </label>
-                <textarea style="height: 200px" name="descrizione" id="descrizione" class="form-control"></textarea>
+                <textarea required style="height: 200px" name="descrizione" id="descrizione" class="form-control"></textarea>
             </div>
 
 
             <div class="col-6">
                 <label for="data" class="form-label">Data completamento: </label>
-                    <input type="date" name="data" id="data" class="form-control">
+                    <input required type="date" name="data" id="data" class="form-control">
             </div>
+
+            <div class="col-6">
+                    <label for="type_id" class="mb-3">Tipo Progetto:</label>
+                    <select name="type_id" id="type_id" class="form-control">
+                        @foreach ($types as $type ) 
+                            <option value="{{ $type->id }}"> {{ $type->nome }} </option>
+                        @endforeach
+                    </select>
+                </div>
             
             <button class="btn btn-success mt-5 w-50" type="submit">Salva</button>
         </div>

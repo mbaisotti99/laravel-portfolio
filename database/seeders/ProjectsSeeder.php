@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+
 use App\Models\Project;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -26,7 +27,9 @@ class ProjectsSeeder extends Seeder
             $hasCliente && $newProject->cliente = $faker->company();
             $newProject->descrizione = implode("", $faker->paragraphs(rand(3,10)));
             $newProject->data = $faker->dateTimeThisDecade();
+            $newProject->type_id = $faker->numberBetween(1,10);
             $newProject->save();
+
         }
 
     }
