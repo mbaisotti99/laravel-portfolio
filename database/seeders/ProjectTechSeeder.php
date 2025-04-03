@@ -18,11 +18,20 @@ class ProjectTechSeeder extends Seeder
         $techs = Technology::all();
         $projects = Project::all();
 
+        
         foreach ($projects as $project) {
+            $assignedTechs = [];
             for ($i = 0; $i < rand(1,3); $i++){
+
+                do{
+                    $tech = $techs->random();
+                } while (in_array($tech->id, $assignedTechs));
+            
+                $assignedTechs[] = $tech->id;
+
                 DB::table("project_technology")->insert([
                     "project_id" => $project->id,
-                    "technology_id" => $techs[rand(0, count($techs) -1)]->id,
+                    "technology_id" => $tech->id,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);

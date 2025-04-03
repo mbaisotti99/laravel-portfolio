@@ -7,18 +7,21 @@
     <title>@yield("titolo")</title>
     <style>
         body, html{
-            height: 100%;
+            height: 100% !important;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
         }
-        .container{
-            flex: 1;
+        main{
+            flex: 1 !important;
         }
     </style>
 </head>
 <body>
     @include("partials.header")
-    @yield("contenuto")
+    <main>
+        @yield("contenuto")
+    </main>
     @include("partials.footer")
 </body>
 </html>

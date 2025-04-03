@@ -18,11 +18,20 @@ class ProjectDevSeeder extends Seeder
         $projects = Project::all();
         $devs = Developer::all();
 
+        
         foreach ($projects as $project) {
+            $assignedDev = [];
+            
             for ($i = 0; $i < rand(1, 4); $i++) {
+                do{
+                    $dev = $devs->random();
+                } while(in_array($dev->id, $assignedDev));
+                
+                $assignedDev[] = $dev->id;
+
                 DB::table("developer_project")->insert([
                     "project_id"=> $project->id,
-                    "developer_id" => $devs[rand(0, count($devs) -1)]->id,
+                    "developer_id" => $dev->id,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);

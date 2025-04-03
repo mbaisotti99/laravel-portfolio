@@ -40,7 +40,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Sei sicuro di voler eliminare questa tecnologia? Questo eliminerà anche tutti i progetti con questa tecnologia
+                                Sei sicuro di voler eliminare questa tecnologia? 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

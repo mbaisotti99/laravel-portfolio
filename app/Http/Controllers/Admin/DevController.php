@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Developer;
+use App\Models\Technology;
 use Illuminate\Http\Request;
 
 class DevController extends Controller
@@ -13,7 +14,7 @@ class DevController extends Controller
      */
     public function index()
     {
-        $devs = Developer::all();
+        $devs = Developer::paginate(10);
         return view("devs.index", compact("devs"));
     }
 
@@ -22,7 +23,8 @@ class DevController extends Controller
      */
     public function create()
     {
-        return view("devs.create");
+        $techs = Technology::all();
+        return view("devs.create", compact("techs"));
     }
 
     /**
@@ -36,11 +38,13 @@ class DevController extends Controller
         $newDev->nome = $data['nome'];
         $newDev->soprannome = $data['soprannome'];
         $newDev->descrizione = $data['descrizione'];
+        
+        $newDev->save();
         if (isset($data['techs'])){
             $newDev->technologies()->attach($data['techs']);
         }
 
-        $newDev->save();
+        return redirect()->route('devs.index');
     }
 
     /**
@@ -56,7 +60,8 @@ class DevController extends Controller
      */
     public function edit(Developer $dev)
     {
-        return view('devs.edit', compact('dev'));
+        $techs = Technology::all();
+        return view('devs.edit', compact('dev', "techs"));
     }
 
     /**
@@ -76,6 +81,8 @@ class DevController extends Controller
         } else{
             $dev->technologies()->detach();
         }
+        
+        return redirect()->route("devs.index");
     }
 
     /**

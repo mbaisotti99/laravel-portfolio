@@ -46,7 +46,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Sei sicuro di voler eliminare questo tipo? Questo eliminerà anche tutti i progetti con questo tipo
+                                Sei sicuro di voler eliminare questo tipo? 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

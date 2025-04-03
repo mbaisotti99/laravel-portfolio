@@ -11,7 +11,7 @@
     }
 </style>
 <div class="container mt-4 cent">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center w-100">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>

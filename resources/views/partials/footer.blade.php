@@ -1,11 +1,14 @@
 <style>
     footer {
+        margin-top: 150px;
         height: 200px;
         background-color: #1c5c91;
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
+        bottom: 0;
     }
 
     .sx {
