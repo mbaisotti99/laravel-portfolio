@@ -149,6 +149,17 @@
                     </select>
                 </div>
 
+                <div class="col-6">
+                    <div class="d-flex form-control flex-wrap mt-3">
+                        @foreach ($techs as $tech )
+                        <div class="me-2">
+                            <input type="checkbox" name="techs[]" value="{{ $tech->id }}" id="tech{{ $tech->id }}" {{ $project->technologies->contains($tech) ? "checked" : "" }}>
+                            <label for="tech{{ $tech->id }}">{{ $tech->nome }}</label>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+
                 <button class="btn btn-success mt-5 w-50" type="submit">Salva</button>
 
 

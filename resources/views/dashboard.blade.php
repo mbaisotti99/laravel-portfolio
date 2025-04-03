@@ -47,6 +47,7 @@
     <div class="d-flex mt-5">
         <a href="{{ route("projects.index") }}" class="btn btn-success roundBtn">Vedi tutti i progetti</a>
         <a href="{{ route("types.index") }}" class="btn btn-warning roundBtn">Esplora le tipologie</a>
+        <a href="{{ route("techs.index") }}" class="btn btn-primary roundBtn">Esplora le tecnologie</a>
     </div>
 </div>
 @endsection

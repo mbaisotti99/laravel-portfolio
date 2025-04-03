@@ -47,7 +47,7 @@
             </x-slot:id>
             <x-slot:techs>
                 @if (count($project->technologies) > 0)
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center flex-wrap">
                         @foreach ($project->technologies as $tech)
                             <span class="badge me-3 mb-3 fs-6" style="background-color: {{$tech->colore}};">{{ $tech->nome }}</span>
                         @endforeach

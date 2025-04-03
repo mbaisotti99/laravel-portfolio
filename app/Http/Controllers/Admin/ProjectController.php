@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,8 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view("projects.create", compact("types"));
+        $techs = Technology::all();
+        return view("projects.create", compact("types", "techs"));
     }
 
     /**
@@ -56,6 +58,10 @@ class ProjectController extends Controller
 
         $newProject->save();
 
+        if (isset($data["techs"])) {
+            $newProject->technologies()->attach($data["techs"]);
+        }
+
         return redirect()->route("projects.show", $newProject);
     }
 
@@ -69,7 +75,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view("projects.edit", compact("project", "types" ));
+        $techs = Technology::all();
+
+        return view("projects.edit", compact("project", "types", "techs" ));
     }
 
     /**
@@ -95,6 +103,11 @@ class ProjectController extends Controller
 
         $project->update();
 
+        if (isset($data["techs"])) {
+            $project->technologies()->sync($data["techs"]);
+        } else {
+            $project->technologies()->detach();
+        }
         return redirect()->route("projects.show", $project);
     }
 

@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\DevController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TechController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +41,14 @@ Route::resource("projects", ProjectController::class)
 
 Route::resource("types", TypeController::class)
 ->whereNumber("type")
+->middleware(["auth", "verified"]);
+
+Route::resource("techs", TechController::class)
+->whereNumber("technology")
+->middleware(["auth", "verified"]);
+
+Route::resource("devs", DevController::class)
+->whereNumber("developer")
 ->middleware(["auth", "verified"]);
 
 Route::fallback(function(){
