@@ -7,15 +7,15 @@
   <h5 class="card-header"> {{$titolo}} </h5>
   <div class="card-body">
     @if (isset($typeName))
-    <div class="accordion accordion-flush my-3" id="accordionFlush{{$typeName}}">
+    <div class="accordion accordion-flush my-3" id="accordionFlush{{$id}}">
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#flush-collapse{{$typeName}}" aria-expanded="false" aria-controls="flush-collapse{{$typeName}}">
+            data-bs-target="#flush-collapse{{$id}}" aria-expanded="false" aria-controls="flush-collapse{{$id}}">
             {{$typeName}}
           </button>
         </h2>
-        <div id="flush-collapse{{$typeName}}" class="accordion-collapse collapse" data-bs-parent="#accordionFlush{{$typeName}}">
+        <div id="flush-collapse{{$id}}" class="accordion-collapse collapse" data-bs-parent="#accordionFlush{{$id}}">
           <div class="accordion-body">
             {{ $typeDesc }}
           </div>
@@ -30,6 +30,8 @@
     </p>
     @endif
 
+    {{ $techs }}
+
     @if ($cliente->isNotEmpty())
     Cliente: <br> <b>{{ $cliente }}</b>
   @else
@@ -43,6 +45,6 @@
     {{ $dettagli }}
   </div>
   <div class="card-footer text-body-secondary">
-    {{$data}}
+    {{\Carbon\Carbon::parse($data)->format("d-m-Y")}}
   </div>
 </div>

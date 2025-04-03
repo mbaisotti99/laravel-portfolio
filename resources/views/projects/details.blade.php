@@ -6,13 +6,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100%;
+            height: 100% !important;
             flex-direction: column;
+            margin: 100px auto;
         }
 
         .card {
             width: 450px !important;
-            height: 1000px !important;
+            height: fit-content !important;
         }
     </style>
     <div class="container cent">
@@ -36,11 +37,23 @@
                 <!-- <a href="{{route("projects.show", $project->id)}}" class="btn btn-primary">Dettagli</a> -->
             </x-slot:dettagli>
             <x-slot:typeName>
-                            {{ $project->type->nome }}
-                        </x-slot:typeName>
-                        <x-slot:typeDesc>
-                            {{ $project->type->descrizione }}
-                        </x-slot:typeDesc>
+                {{ $project->type->nome }}
+            </x-slot:typeName>
+            <x-slot:typeDesc>
+                {{ $project->type->descrizione }}
+            </x-slot:typeDesc>
+            <x-slot:id>
+                {{ $project->id }}
+            </x-slot:id>
+            <x-slot:techs>
+                @if (count($project->technologies) > 0)
+                    <div class="d-flex justify-content-center">
+                        @foreach ($project->technologies as $tech)
+                            <span class="badge me-3 mb-3 fs-6" style="background-color: {{$tech->colore}};">{{ $tech->nome }}</span>
+                        @endforeach
+                    </div>
+                @endif
+            </x-slot:techs>
         </x-project-card>
         <div class="d-flex justify-content-around w-50 mt-5 ">
             <a href="{{ route("projects.edit", $project) }}" class="btn fs-3 btn-outline-warning">Modifica</a>
@@ -48,7 +61,7 @@
                 Elimina
             </button>
         </div>
-        
+
         <form action="{{ route("projects.destroy", $project) }}" method="POST" id="destroy">
             @csrf
             @method("DELETE")
@@ -70,7 +83,8 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button class="btn btn-outline-danger"
-                    onclick="event.preventDefault(); document.getElementById('destroy').submit()">Elimina</button>                </div>
+                        onclick="event.preventDefault(); document.getElementById('destroy').submit()">Elimina</button>
+                </div>
             </div>
         </div>
     </div>

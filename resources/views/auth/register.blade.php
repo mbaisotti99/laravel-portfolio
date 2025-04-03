@@ -1,7 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
-<div class="container mt-4">
+@section('contenuto')
+<style>
+    .cent{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        flex-direction: column;
+    }
+</style>
+<div class="container mt-4 cent">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

@@ -13,8 +13,8 @@
     }
 </style>
     <div class="container pb-5">
+        <h1 class="text-center mt-5">Tutti i Progetti</h1>
         <div class="d-flex justify-content-around w-100 ">
-            <h1 class="text-center mt-5">Tutti i Progetti</h1>
             <a href="{{ route("projects.create") }}" class="btn btn-success fs-3 mt-5">Crea un nuovo progetto</a>
             <a href="{{ route("types.index") }}" class="btn btn-success fs-3 mt-5">Visualizza tipologie</a>
         </div>
@@ -31,6 +31,9 @@
                         <x-slot:data>
                             {{ $project->data }}
                         </x-slot:data>
+                        <x-slot:id>
+                            {{ $project->id }}
+                        </x-slot:id>
                         <x-slot:devs>
                             {{ implode(" - ", $project->devs) }}
                         </x-slot:devs>
@@ -46,6 +49,15 @@
                         <x-slot:typeDesc>
                             {{ $project->type->descrizione }}
                         </x-slot:typeDesc>
+                        <x-slot:techs>
+                            @if (count($project->technologies) > 0)
+                            <div class="d-flex justify-content-center">
+                                @foreach ($project->technologies as $tech )
+                                    <span class="badge me-3 mb-3 fs-6" style="background-color: {{$tech->colore}};">{{ $tech->nome }}</span>
+                                @endforeach
+                            </div>
+                            @endif
+                        </x-slot:techs>
                     </x-project-card>
                 </div>
             @endforeach
