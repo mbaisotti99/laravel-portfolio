@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string("titolo");
             $table->string("cliente")->nullable();
-            $table->json("devs")->nullable();
             $table->longText("descrizione");
             $table->date("data")->nullable();
             $table->timestamps();

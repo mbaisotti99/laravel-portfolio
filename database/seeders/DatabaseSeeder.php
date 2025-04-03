@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             DevsSeeder::class,
             DevsTechsSeeder::class,
             ProjectsSeeder::class,
+            ProjectDevSeeder::class,
             ProjectTechSeeder::class,
         ]);
     }

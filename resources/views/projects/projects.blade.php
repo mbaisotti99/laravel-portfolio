@@ -35,8 +35,11 @@
                             {{ $project->id }}
                         </x-slot:id>
                         <x-slot:devs>
-                            {{ implode(" - ", $project->devs) }}
-                        </x-slot:devs>
+                        <!-- @foreach ($project->developers as $dev )
+                        {{$dev->nome}} -
+                        @endforeach -->
+                        {{implode(" - ", $project->developers()->pluck("nome")->toArray());}}
+                    </x-slot:devs>
                         <x-slot:descrizione>
                             <!-- <p class="card-text">Descrizione: <br> {{ $project->descrizione }}</p> -->
                         </x-slot:descrizione>

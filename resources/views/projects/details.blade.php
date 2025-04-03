@@ -28,7 +28,7 @@
                 {{ $project->data }}
             </x-slot:data>
             <x-slot:devs>
-                {{ implode(" - ", $project->devs) }}
+                {{ implode(" - ", $project->developers) }}
             </x-slot:devs>
             <x-slot:descrizione>
                 <p class="card-text">Descrizione: <br> {{ $project->descrizione }}</p>
