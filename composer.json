@@ -8,6 +8,7 @@
         "php": "^8.2",
         "davidhsianturi/blade-bootstrap-icons": "^1.5",
         "laravel/framework": "^11.0",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "nerdroid23/blade-icomoon": "^2.0",
         "pacificdev/laravel_9_preset": "^1.3"

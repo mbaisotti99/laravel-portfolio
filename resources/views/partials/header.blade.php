@@ -12,4 +12,4 @@
     <a href="<?= Auth::check() ? route('dashboard') : "/" ?>">
         <img src="/head.png" alt="MyPortfolio" width="500">
     </a>
-</header>
+</header>   
