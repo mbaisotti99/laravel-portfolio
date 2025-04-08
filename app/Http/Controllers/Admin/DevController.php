@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Developer;
 use App\Models\Technology;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DevController extends Controller
 {
@@ -38,6 +39,10 @@ class DevController extends Controller
         $newDev->nome = $data['nome'];
         $newDev->soprannome = $data['soprannome'];
         $newDev->descrizione = $data['descrizione'];
+        if(array_key_exists("img", $data)){
+            $img_path = Storage::putFile("devs", $data["img"]); 
+            $newDev->img = $img_path;
+        }
         
         $newDev->save();
         if (isset($data['techs'])){
@@ -73,6 +78,13 @@ class DevController extends Controller
         $dev->nome = $data['nome'];
         $dev->soprannome = $data['soprannome'];
         $dev->descrizione = $data['descrizione'];
+        if (array_key_exists("deleteImg", $data)){
+            Storage::delete($dev->img);
+        } else if (array_key_exists('img', $data)){
+            Storage::delete($dev->img);
+            $img_path = Storage::putFile("devs", $data["img"]);
+            $dev->img = $img_path;
+        }
 
         $dev->update();
 
@@ -90,6 +102,9 @@ class DevController extends Controller
      */
     public function destroy(Developer $dev)
     {
+        if ($dev->img){
+            Storage::delete($dev->img);
+        }
         $dev->delete(); 
         return redirect()->route("devs.index");
     }

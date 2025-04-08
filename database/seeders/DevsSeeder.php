@@ -19,6 +19,7 @@ class DevsSeeder extends Seeder
             $newDev->nome = $faker->name();
             $newDev->soprannome = $faker->word();
             $newDev->descrizione = implode(" ", $faker->paragraphs(rand(1,5)));
+            $newDev->img = "devs/dev_" . $i+1 . ".png";
 
             $newDev->save();
         }

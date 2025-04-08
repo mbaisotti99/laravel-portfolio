@@ -1,7 +1,7 @@
 @props(["dev"])
 
 <div class="card mb-5 text-center">
-  <img src="..." class="card-img-top" alt="...">
+  <img src="{{ asset("storage/" . $dev->img) }}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{$dev->nome}}</h5>
     <h5 class="card-title text-secondary">{{$dev->soprannome}}</h5>
